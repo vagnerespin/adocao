@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Mundo da Adoção!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .box {
+            display: inline-block;
+            padding: 20px;
+            margin: 15px;
+            background-color: #ffcc00;
+            border-radius: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .box:hover {
+            transform: scale(1.1);
+        }
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🐾 Obrigado por se cadastrar! 🐾</h1>
+        <h3>Escolha para onde quer ir agora:</h3>
+
+        <div class="box">
+            <a href="{{ url_for('adocao') }}">🐶 Ver animais disponíveis</a>
+        </div>
+
+        <div class="box">
+            <a href="{{ url_for('cadastro') }}">📋 Cadastrar um novo animal</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

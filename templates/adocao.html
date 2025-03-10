@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adote um Pet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>🐶 Encontre Seu Novo Amigo! 🐱</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">Página Inicial</a>
+        <a href="{{ url_for('cadastro') }}">Cadastrar Animal</a>
+        <a href="{{ url_for('cadastro_adotante') }}">Cadastro de Adotante</a>
+    </nav>
+    <section>
+        <h2>🐾 Animais Disponíveis para Adoção 🐾</h2>
+        <div class="animal-list">
+            {% for animal in animais %}
+                <div class='animal-card' onclick='showAnimalDetails({{ animal[0] }})'>
+                    <h3>{{ animal[1] }} ({{ animal[3] }})</h3>
+                    <p>Idade: {{ animal[2] }}</p>
+                    <img src="{{ url_for('static', filename='images/' + animal[5]) }}" alt="Foto de {{ animal[1] }}" class='animal-img'>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <div id="animal-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="animal-details"></div>
+        </div>
+    </div>
+    <script>
+        function showAnimalDetails(id) {
+            fetch('/animal/' + id)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('animal-details').innerHTML = data;
+                    document.getElementById('animal-modal').style.display = 'block';
+                });
+        }
+
+        function closeModal() {
+            document.getElementById('animal-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

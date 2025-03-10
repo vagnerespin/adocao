@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Animal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>🐾 Detalhes do Animal 🐾</h1>
+    <nav>
+        <a href="{{ url_for('index') }}">Página Inicial</a>
+        <a href="{{ url_for('adocao') }}">Ver Animais</a>
+    </nav>
+    <section>
+        <div class="animal-details">
+            <h2>{{ animal[1] }} ({{ animal[3] }})</h2>
+            <p><strong>Idade:</strong> {{ animal[2] }}</p>
+            <p><strong>Descrição:</strong> {{ animal[4] }}</p>
+            <img src="{{ url_for('static', filename='images/' + animal[5]) }}" alt="Foto de {{ animal[1] }}" class="animal-img">
+        </div>
+    </section>
+    <button onclick="window.history.back()">Voltar</button>
+</body>
+</html>

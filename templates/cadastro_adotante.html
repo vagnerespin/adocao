@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Adotante</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>🐾 Cadastro de Adotante 🐾</h1>
+    
+    <nav>
+        <a href="{{ url_for('index') }}">Página Inicial</a>  <!-- Corrigido para 'index' -->
+        <a href="{{ url_for('adocao') }}">Ver Animais</a>
+    </nav>
+
+    <section>
+        <h2>Preencha seus dados</h2>
+        
+        <form action="{{ url_for('cadastro_adotante') }}" method="POST" autocomplete="off">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required aria-label="Nome Completo">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required aria-label="E-mail de contato">
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" required aria-label="Número de telefone">
+
+            <label for="endereco">Endereço:</label>
+            <textarea id="endereco" name="endereco" required aria-label="Endereço completo"></textarea>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+</body>
+</html>
